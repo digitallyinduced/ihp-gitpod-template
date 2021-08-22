@@ -42,4 +42,4 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && git clone https://github.com/digitallyinduced/ihp-boilerplate.git /tmp/warmup \
     && cd /tmp/warmup \
-    && nix-shell -j auto --cores 0 --quiet --run 'echo ok'
+    && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)
