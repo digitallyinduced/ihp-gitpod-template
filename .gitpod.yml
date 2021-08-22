@@ -4,16 +4,16 @@ image:
 ports:
   # IHP Server
   - port: 8001
-    onOpen: open-preview
+    onOpen: open-browser
   # IDE
   - port: 8001
-    onOpen: open-preview
+    onOpen: open-browser
   # Live Reloading
   - port: 8002
     onOpen: ignore
 
 tasks:
   - init: >
-      ( if [ ! -e "Main.hs" ]; then git init; git remote add origin https://github.com/digitallyinduced/ihp-boilerplate.git; git pull origin master; rm -rf .git; nix-shell -j auto --cores 0 --quiet --run 'make -s all .envrc; new-application Web'; fi) && nix-shell -j auto --cores 0 --run 'make -s all .envrc'
+      ( if [ ! -e "Main.hs" ]; then git init; git remote add origin https://github.com/digitallyinduced/ihp-boilerplate.git; git pull origin master; rm -rf .git; nix-shell -j auto --cores 0 --quiet --run 'make -s all .envrc; new-application Web'; fi) && nix-shell -j auto --cores 0 --run 'make -s all .envrc' && direnv allow
     command: >
       ./start
