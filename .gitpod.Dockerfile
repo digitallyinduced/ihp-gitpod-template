@@ -26,7 +26,7 @@ RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /
 # Install cachix
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && nix-env -iA cachix -f https://cachix.org/api/v1/install \
-  && cachix use cachix
+  && cachix use cachix \
   && cachix use digitallyinduced
 
 # Install git
