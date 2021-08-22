@@ -1,0 +1,19 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  # IHP Server
+  - port: 8001
+    onOpen: open-preview
+  # IDE
+  - port: 8001
+    onOpen: open-preview
+  # Live Reloading
+  - port: 8002
+    onOpen: ignore
+
+tasks:
+  - init: >
+      ( if [ ! -e "Main.hs" ]; then git clone --quiet --depth=1 https://github.com/digitallyinduced/ihp-boilerplate.git .; rm -rf .git; nix-shell -j auto --cores 0 --quiet --run 'make -s all .envrc; new-application Web'; fi) && nix-shell -j auto --cores 0 --quiet --run 'make -s all .envrc'
+    command: >
+      ./start
