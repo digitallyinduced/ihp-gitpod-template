@@ -23,3 +23,5 @@ tasks:
 vscode:
   extensions:
     - haskell.haskell
+    - s0kil.vscode-hsx
+    - arrterian.nix-env-selector
